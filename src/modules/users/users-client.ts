@@ -15,22 +15,22 @@ class UsersClient {
 
     async create(body: POSTUserBody): Promise<User> {
         const response = await this.http.post('/v1/users', body);
-        return this.parse(response);
+        return this.parse(response.data);
     }
 
     async list(): Promise<User[]> {
         const response = await this.http.get(`/v1/users`);
-        return response.map((user: any) => this.parse(user));
+        return response.data.map((user: any) => this.parse(user));
     }
 
     async get(id: string): Promise<User> {
         const response = await this.http.get(`/v1/users/${id}`);
-        return this.parse(response);
+        return this.parse(response.data);
     }
 
     async update(id: string, body: PUTUserBody): Promise<User> {
         const response = await this.http.put(`/v1/users/${id}`, body);
-        return this.parse(response);
+        return this.parse(response.data);
     }
 
     async delete(id: string): Promise<void> {
