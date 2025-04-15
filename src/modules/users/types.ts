@@ -42,5 +42,10 @@ export type UserContact = {
     updated_at: string;
 };
 
-export type POSTUserBody = Omit<User, ReadOnlyUserKeys | 'avatar_url'>;
-export type PUTUserBody = Omit<Partial<User>, ReadOnlyUserKeys | 'internal_email' | 'avatar_url'>;
+export type PublicUser = {
+    first_name: string;
+    avatar_url: string | null;
+};
+
+export type CreateUserBody = Omit<User, ReadOnlyUserKeys | 'avatar_url'>;
+export type UpdateUserBody = Omit<Partial<User>, ReadOnlyUserKeys | 'internal_email' | 'avatar_url'>;

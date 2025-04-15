@@ -1,5 +1,5 @@
 import { HttpClient } from '../../client';
-import { POSTUserBody, PUTUserBody, User } from './types';
+import { CreateUserBody, UpdateUserBody, User } from './types';
 
 class UsersClient {
     constructor(private http: HttpClient) {}
@@ -13,7 +13,7 @@ class UsersClient {
         } as User;
     }
 
-    async create(body: POSTUserBody): Promise<User> {
+    async create(body: CreateUserBody): Promise<User> {
         const response = await this.http.post('/v1/users', body);
         return this.parse(response.data);
     }
@@ -28,7 +28,7 @@ class UsersClient {
         return this.parse(response.data);
     }
 
-    async update(id: string, body: PUTUserBody): Promise<User> {
+    async update(id: string, body: UpdateUserBody): Promise<User> {
         const response = await this.http.put(`/v1/users/${id}`, body);
         return this.parse(response.data);
     }
