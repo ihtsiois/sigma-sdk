@@ -4,13 +4,13 @@
     "main": "./dist/index.js",
     "types": "./dist/index.d.ts",
     "scripts": {
-        "build": "tsc",
-        "postinstall": "npm run build",
+        "build": "tsup",
         "prepack": "npm run build"
     },
     "type": "commonjs",
     "devDependencies": {
         "@types/node": "^22.14.1",
+        "tsup": "^8.4.0",
         "typescript": "^5.8.3"
     },
     "dependencies": {
