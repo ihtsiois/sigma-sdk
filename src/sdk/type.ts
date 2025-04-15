@@ -1,3 +1,3 @@
-import { HttpClientOpts } from '../client';
+import { HttpClientOpts } from '@/client';
 
 export type SigmaClientOpts = {} & HttpClientOpts;

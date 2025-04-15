@@ -1,4 +1,4 @@
-import { HttpClient } from '../../client';
+import { HttpClient } from '@/client';
 import * as types from './types';
 
 class AuthClient {

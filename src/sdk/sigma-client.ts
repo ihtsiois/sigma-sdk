@@ -1,6 +1,6 @@
-import { HttpClient } from '../client';
-import { AuthClient } from '../modules/auth';
-import { UsersClient } from '../modules/users';
+import { HttpClient } from '@/client';
+import { AuthClient } from '@/modules/auth';
+import { UsersClient } from '@/modules/users';
 import { SigmaClientOpts } from './type';
 
 class SigmaClient {
@@ -9,7 +9,9 @@ class SigmaClient {
     users: UsersClient;
     auth: AuthClient;
 
-    constructor({ baseURL }: SigmaClientOpts) {
+    constructor(opts: SigmaClientOpts) {
+        const { baseURL } = opts;
+
         this.http = new HttpClient({ baseURL });
 
         this.users = new UsersClient(this.http);

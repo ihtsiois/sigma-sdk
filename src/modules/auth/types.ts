@@ -1,4 +1,4 @@
-import { PublicUser } from '../users';
+import { PublicUser } from '@/modules/users';
 
 export type AuthUserIdentifier = string;
 export type AuthUserPassword = string;
