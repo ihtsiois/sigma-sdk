@@ -135,9 +135,9 @@ export type UserUpdateBody = Omit<Partial<User>, ReadOnlyUserKeys | 'internal_em
 export type UserUpdateResponse = { data: UserResponse };
 export type UserUpdateReturn = User;
 
-export type UserDeleteReturn = void;
+export type UserDeleteReturn = null;
 
 export type UserUpdateAvatarBody = File;
-export type UserUpdateAvatarReturn = void;
+export type UserUpdateAvatarReturn = null;
 
-export type UserRemoveAvatarReturn = void;
+export type UserRemoveAvatarReturn = null;

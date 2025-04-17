@@ -1,20 +1,12 @@
 import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
 import { HttpClientOpts } from './type';
+import { HandlerError } from '@/sdk';
 
 class HttpClient {
     private instance: AxiosInstance;
 
     constructor({ baseURL }: HttpClientOpts) {
         this.instance = axios.create({ baseURL });
-
-        // Interceptors
-        this.instance.interceptors.response.use(
-            (response: AxiosResponse) => response,
-            (error) => {
-                console.error('Erro na requisição:', error.message);
-                return Promise.reject(error);
-            }
-        );
     }
 
     async get<T = any>(url: string, config?: AxiosRequestConfig): Promise<T> {
@@ -31,6 +23,16 @@ class HttpClient {
 
     async delete<T = any>(url: string, config?: AxiosRequestConfig): Promise<T> {
         return this.instance.delete(url, config).then((res) => res.data);
+    }
+
+    handleError(err: any): HandlerError {
+        const res = err?.response?.data;
+
+        return {
+            code: res?.code || 'UNKNOWN',
+            status: res?.status || 'UNKNOWN',
+            name: res?.error || 'UNKNOWN',
+        };
     }
 }
 
